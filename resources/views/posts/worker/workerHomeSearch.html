@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SmallBoulo-search</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="../css/empGenSearch.css" >
+  
+  <!-- my styles -->
+  <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ 
+     <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" id="navv">
+        
+        <div class="container topnav">
+            
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                   
+                </button>
+                <a class="navbar-brand topnav" href="../index.html" > SmallBoulo </a>
+            </div>
+            
+
+            <!-- Collect the nav links, forms, and other content for toggling ,go-to structure -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a id="signupLk" data-toggle="modal" href="#loginInfo">Sign Up</a>
+                    </li>
+                    <li>
+                        <a  id="loginLk" data-toggle="modal" href="#loginModal">Log In<span class="glyphicon glyphicon-log-in"></span></a>
+                    </li>
+                    <li class="active">
+                        <a href="../worker/workerHomeSearch.html" id="workerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
+                    </li>
+                    <li>
+                        <a href="../worker/wProfile.html" id="workerProfile">My Profile<span class="glyphicon glyphicon-user"></span></a>
+                    </li>
+                    <li>
+                        <a id="logoutBtn" href="#logoutBtn" class="wLogOut">Log Out<span class="glyphicon glyphicon-log-out"></span></a>
+                    </li>
+                </ul>
+            </div> <!-- .navbar-collapse -->   
+        </div><!-- /.container -->
+    </nav><!-- naivagtion -->
+ 
+
+
+
+
+    <!-- header -->
+    <a name="search"></a>
+
+    <div class="intro-header"> 
+        <div class="container-fluid" >
+            <div class="row" >
+                 <div class="col-md-4 col-md-offset-4">
+
+
+                    <h1> search SmallBoulos around you </h1>
+                   
+                   <form role="form" id="searchForm">
+                        
+                        <div class="form-group ">
+
+                           <!-- location selection -->
+                           <label for="location"><h2 id="workerColor"> Where do you live  <span class="glyphicon glyphicon-map-marker"></span> </h2></label>                           
+                            <select class="form-control offset-md-4">
+                                <option value="Buea-molyko"> Buea-molyko </option>
+                                <option value="Buea-boukwango"> Buea-boukwango</option>  
+                                <option value="Buea-class-quarters"> Buea-class-quarters </option>
+                                <option value="Buea-town"> Buea-town </option>
+                                <option value="Buea-muea"> Buea-muea </option>                     
+                                <option value="mile 16 "> mile 16 </option>
+                                <option value="mutengene"> mutengene </option>
+                                <option value="tiko"> tiko </option>
+                            </select>
+                       
+
+                            <label for="workers"><h3 id="workerColor"> job category  <span class="glyphicon glyphicon-list"></span> </h3></label>
+                         
+                         <!-- job selection -->
+                         <select class="form-control">
+                                <option value="cartpenter"> carpenter </option>
+                                <option value="computer technician"> computer technician</option>  
+                                <option value="plomber"> plomber </option>
+                                <option value="typer"> typer </option>
+                                <option value="electrician">electrician </option>                     
+                                <option value="brick layer">brick layer </option>
+                                <option value="farmer">farmer</option>
+                                <option value="house care"> house care </option>
+                            </select>
+
+                        </div>
+
+                            <button id="searchBtn" class="btn-warning btn-lg"> search </button>
+                   </form>        
+                
+                </div>                
+            </div><!-- row end -->              
+        </div>  <!-- /.container end-->
+    </div> <!-- /.intro-header end -->
+    
+
+  <!-- for search results display  -->
+    <div class="searchResults">
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+    </div><!-- results div end-->   
+    
+    <!-- sign up Modal -->
+    <div class="modal fade" id="loginInfo" role="dialog" >
+      <div class="modal-dialog"> Create a Workers account
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                <h4 class="modal-title workerColor" > Sign Up </h4>
+            </div> 
+
+            <div class="modal-body">
+              <div class="form-horizontal">
+                <p id="signupError"></p><p id="signupSuccess"></p>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-8">
+                    <input type="email" name="empEmail" class="form-control" id="signupEmail" placeholder="john.doe@domain.com" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" name="empPassword" class="form-control" id="signupPassword" placeholder="Password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Confirm Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                  </div>
+                </div>
+                <p>By creating an account you agree to our <a href="#" id="employerColor">Terms & Privacy</a>.</p>   
+              </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger pull-left" data-dismiss="modal"> Cancel </button>
+
+                <a href="#personalInfo" data-toggle="modal"><button id="nextClick" class="btn btn-success pull-right">Next &raquo;</button></a>
+            </div>
+
+        </div><!-- /.modal-content -->
+      </div>
+    </div> <!--end login information modal -->
+
+
+    <!-- sign up Modal -->
+    <div class="modal fade" id="personalInfo" role="dialog">
+        <div class="modal-dialog"> Create a Workers account
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                    <h4 class="modal-title workerColor" > Sign Up </h4>
+                </div> 
+
+                <div class="modal-body">
+                  <div class="form-horizontal">
+                    <p id="signupError"></p><p id="signupSuccess"></p>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-3 control-label">Your Name</label>
+                      <div class="col-sm-8">
+                        <input type="text"  name="empName" class="form-control" id="signupName" placeholder="John Doe" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-3 control-label">Date of Birth</label>
+                      <div class="col-sm-8">
+                        <input type="date" name="empDOB" class="form-control" id="signupDOB" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Gender</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="signupGender" name="empGender" required>
+                          <option>I am a...</option>
+                          <option value="m">male</option>
+                          <option value="f">female</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-3 control-label">Country</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="empCountry" class="form-control" id="signupCountry" placeholder="Cameroon" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-3 control-label">City</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="empCity" class="form-control" id="signupCity" placeholder="Buea" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Your Skill</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="signupSkill" name="empGender" required>
+                          <option>What can you do?...</option>
+                          <option value="cartpenter"> carpenter </option>
+                          <option value="computer technician"> computer technician</option>  
+                          <option value="plomber"> plomber </option>
+                          <option value="typer"> typer </option>
+                          <option value="electrician">electrician </option>                     
+                          <option value="brick layer">brick layer </option>
+                          <option value="farmer">farmer</option>
+                          <option value="house care"> house care </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-3 control-label">Phone Number</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="empTel" class="form-control" pattern="-?[0-9]*(\.[0-9]+)?" id="signupTel" placeholder="+237..." required>
+                      </div>
+                    </div>
+                    <p>By creating an account you agree to our <a href="#" id="workerColor">Terms & Privacy</a>.</p>   
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger pull-left" data-dismiss="modal"> Cancel </button>
+                    <div id="loader" class="mdl-spinner mdl-js-spinner is-active pull-right"></div>
+                    <button id="wSignupBtn" class="btn btn-warning"> Sign Up </button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /signup modal  end -->
+
+    <!-- log-in Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModallabel" aria-hidden="true">
+        <div class="modal-dialog"> Log Into SmallBoulo
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                    <h4 class="modal-title workerColor"> Log In </h4>
+                </div> 
+
+                <div class="modal-body">
+                        
+                        <div class="form-horizontal">
+                          <fieldset>
+                            <legend>Employer Login</legend>
+                            <p id="loginError"></p><p id="loginSuccess"></p>
+                            <div class="form-group">
+                              <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                              <div class="col-sm-8">
+                                <input type="email" name="empEmail" class="form-control" id="loginEmail" placeholder="john.doe@domain.com" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                              <div class="col-sm-8">
+                                <input type="password" name="empPassword" class="form-control" id="loginPassword" placeholder="Password" required>
+                              </div>
+                            </div>
+                            <div class="col-sm-offset-3 col-sm-8">
+                              <a id="wForgotPassword" href="#">Forgot your Password</a>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-8">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox"> Remember me
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger pull-left" data-dismiss="modal"> Cancel </button>
+                    <div id="loader" class="mdl-spinner mdl-js-spinner is-active pull-right"></div>
+                    <button id="wLoginBtn" class="btn btn-warning"> Log In </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+   </div><!-- /.log in modal end -->
+
+   
+    
+ 
+
+   
+
+
+
+
+    <!-- footer -->
+    <a name="contact"></a>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; SmallBoulo 2017 all Rights Reserved </P>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end --> 
+    
+
+   
+
+</body>
+    <!-- Firebase initalization script -->
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script src="../scripts/initWorkerFirebase.js"></script>
+
+    <!-- jquery script -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script> 
+    <!-- offline jquery version -->
+    <script type="text/javascript" src="../script/jquery-3.2.1.min.js"></script>
+
+    <!-- this are my personal scripts -->
+    <script type="text/javascript" src="../scripts/worker.js"></script>
+
+</html>
