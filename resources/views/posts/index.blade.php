@@ -39,7 +39,7 @@
                         <br>
                        
 
-                        <a href="worker/workerHomeSearch.html"><button class="btn btn-warning btn-lg" id="workerBtn"> WORKER </button></a>
+                        <a href="/worker"><button class="btn btn-warning btn-lg" id="workerBtn"> WORKER </button></a>
 
                         <h3> search SmallBoulo </h3>
                 </div>

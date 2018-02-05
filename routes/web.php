@@ -30,3 +30,6 @@ Route::get('/employer/myPosts', 'EmployerController@myPosts');
 
 // Manage employer posts
 Route::post('/posts', 'PostController@store');
+
+// Worker routes
+Route::get('/worker', 'WorkerController@index');

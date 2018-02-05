@@ -6,5 +6,20 @@ use Illuminate\Http\Request;
 
 class WorkerController extends Controller
 {
-    //
+    public function index(){
+    	return view('posts.worker.index');
+    }
+
+    public function profile(){
+    	return view('posts.worker.profile');
+    }
+
+    public function catalog(){
+    	return view('posts.worker.catalog');
+    }
+
+    public function notifications(){
+    	return view('posts.worker.notification');
+    }
+
 }
