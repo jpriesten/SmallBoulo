@@ -1,6 +1,16 @@
 	
 @extends('layouts.master')	
 
+    <!-- write functional code to dynamically change the navbar according to the view -->
+    @if('worker' == 'worker')
+
+        @include('layouts.WorkerNav')
+
+    @elseif('employer' == 'employer')
+
+        @include('layouts.nav')
+
+    @endif
 
  @section('content')
 

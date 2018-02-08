@@ -1,29 +1,26 @@
-
-@extends('layouts.employer')
+@extends('layouts.worker')
 
 
 @section('content')
-
-
+    
     <link rel="stylesheet" type="text/css" href="/css/empPages.css">
     <link rel="stylesheet" type="text/css" href="/css/empGenSearch.css">
-    
+
     <div class="pageContent">
         <div class="container">
             <div class="row">
                 
-                @include('layouts.sideNav')
+                @include('layouts.workerSideNav')
 
                   <!-- dashboard -->
                   <div class="col-md-9">
-                      <!-- Write new code here-->
-                      @foreach ($posts as $post)
+                    <!-- Write new code here-->
 
-                        @include('posts.post')
+                    <h2>Show Work requests from employer(s) of user</h2>
+                    
 
-                      @endforeach
                   </div>
-                 <!-- closing of dashboard -->
+                  <!-- closing of dashboard -->
 
                  
             </div>
@@ -31,5 +28,5 @@
 
     </div>
 
+
 @endsection
-	  	

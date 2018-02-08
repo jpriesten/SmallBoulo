@@ -33,3 +33,7 @@ Route::post('/posts', 'PostController@store');
 
 // Worker routes
 Route::get('/worker', 'WorkerController@index');
+Route::get('/worker/profile', 'WorkerController@profile');
+Route::get('/worker/catalog', 'WorkerController@catalog');
+Route::get('/worker/requests', 'WorkerController@requests');
+Route::get('/worker/notification', 'WorkerController@notification');

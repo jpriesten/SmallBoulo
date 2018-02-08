@@ -8,7 +8,7 @@
 
     <!-- leftmost side links -->
     <ul class="list-unstyled">
-        <li><a href="work-requests" id="whenWorkerActive"> Work Requests </a><li>
+        <li><a href="requests" id="whenWorkerActive"> Work Requests </a><li>
         
         <li><a href="catalog" id="workerColor"> Catalog </a></li>
 

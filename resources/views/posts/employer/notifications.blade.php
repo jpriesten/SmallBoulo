@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.employer')
 
 
 @section('content')
@@ -16,6 +16,8 @@
                   <!-- dashboard -->
                  <div class="col-md-10">
                  
+                    <h2>Employer notification goes here</h2>
+
                  </div> <!-- closing of dashboard -->
 
                  

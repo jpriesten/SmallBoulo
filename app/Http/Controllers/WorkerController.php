@@ -11,14 +11,18 @@ class WorkerController extends Controller
     }
 
     public function profile(){
-    	return view('posts.worker.profile');
+        return view('posts.worker.profile');
+    }
+
+    public function requests(){
+        return view('posts.worker.requests');
     }
 
     public function catalog(){
     	return view('posts.worker.catalog');
     }
 
-    public function notifications(){
+    public function notification(){
     	return view('posts.worker.notification');
     }
 

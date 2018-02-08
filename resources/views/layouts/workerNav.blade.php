@@ -1,5 +1,5 @@
  <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" id="navv">
+ <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" id="navv">
         
         <div class="container">
             
@@ -26,13 +26,13 @@
                         <a  id="loginL" href="/log_in">Log In<span class="glyphicon glyphicon-log-in"></span></a>
                     </li>
                     <li>
-                        <a href="/employer" id="employerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
+                        <a href="/worker" id="workerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
                     </li>
                     <li>
-                        <a href="/employer/profile" id="employerProfile">My Profile<span class="glyphicon glyphicon-user"></span></a>
+                        <a href="/worker/profile" id="workerProfile">My Profile<span class="glyphicon glyphicon-user"></span></a>
                     </li>
                     <li>
-                        <a id="logoutBtn" href="/log_out" class="empLogOut">Log Out<span class="glyphicon glyphicon-log-out"></span></a>
+                        <a id="logoutBtn" href="/log_out" class="LogOut">Log Out<span class="glyphicon glyphicon-log-out"></span></a>
                     </li>
                 </ul>
             </div> <!-- .navbar-collapse -->   
