@@ -9,8 +9,6 @@ use App\Post;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
-
     	return view('posts.index');
     }
 
@@ -48,5 +46,11 @@ class PostController extends Controller
     	]);
 
     	return redirect('/employer/myPosts');
+	}
+	
+	public function searchResults()
+    {
+		$SearchR = Post::where('jobLocation', '=', request('jobLocation'))->orWhere('userSkill', '=', request('userSkill'))->get(); 
+        return view('posts.employer.searchResults', compact('SearchR'));
     }
 }

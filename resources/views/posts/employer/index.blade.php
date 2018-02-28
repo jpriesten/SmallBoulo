@@ -16,40 +16,42 @@
 
                     <h1 id="whenActive"> search Workers around you </h1>
                    
-                   <form role="form" id="searchForm">
+                   <form role="form" id="searchForm" method="POST" action="/searchResults">
+                   {{ csrf_field() }}
                         
                         <div class="form-group ">
                            
                            <!-- location selection -->
                            <label for="location"><h2 id="employerColor"> Where do you live  <span class="glyphicon glyphicon-map-marker"></span> </h2></label>                           
-                            <select class="form-control">
-                                <option value="Buea-molyko"> Buea-molyko </option>
-                                <option value="Buea-boukwango"> Buea-boukwango</option>  
-                                <option value="Buea-class-quarters"> Buea-class-quarters </option>
-                                <option value="Buea-town"> Buea-town </option>
-                                <option value="Buea-muea"> Buea-muea </option>                     
-                                <option value="mile 16 "> mile 16 </option>
-                                <option value="mutengene"> mutengene </option>
-                                <option value="tiko"> tiko </option>
+                            <select class="form-control" name="jobLocation">
+                                <option > Buea-molyko </option>
+                                <option > Buea-boukwango</option>  
+                                <option > Buea-class-quarters </option>
+                                <option > Buea-town </option>
+                                <option > Buea-muea </option>                     
+                                <option > mile 16 </option>
+                                <option > mutengene </option>
+                                <option > tiko </option>
                             </select>
                         
                            <!-- job selection -->
                            <label for="workers"><h3 id="employerColor"> job category  <span class="glyphicon glyphicon-list"></span> </h3></label>
 
-                            <select class="form-control">
-                                <option value="cartpenter"> carpenter </option>
-                                <option value="computer technician"> computer technician</option>  
-                                <option value="plomber"> plomber </option>
-                                <option value="typer"> typer </option>
-                                <option value="electrician">electrician </option>                     
-                                <option value="brick layer">brick layer </option>
-                                <option value="farmer">farmer</option>
-                                <option value="house care"> house care </option>
+                            <select class="form-control" name="userSkill">
+                                <option> Carpenter </option>
+                                <option> Gardener </option>
+                                <option> Electrician </option>
+                                <option> Plumber </option>
+                                <option> House Teacher </option>
+                                <option> Farm Worker </option>
+                                <option> Painter </option>
+                                <option> Brick Layer </option>
+                                <option> Builder </option>
                             </select>
 
                         </div>
 
-                            <button id="searchBtn" class="btn-success btn-lg"> search </button>
+                            <button id="searchBtn" class="btn-success btn-lg" type="submit"> search </button>
                    </form>        
                 </div>
                 

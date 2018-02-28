@@ -29,4 +29,11 @@ class EmployerController extends Controller
 
     	return view('posts.employer.myPosts', compact('posts'));
     }
+
+    public function searchResult($id)
+    {
+        $SearchR = Post::where('bouloId', '=', $id)->get();
+        return view('posts.employer.searchResults', compact('SearchR'));		
+    }
+
 }

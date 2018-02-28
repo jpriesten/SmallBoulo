@@ -28,6 +28,11 @@ Route::get('/employer/postJob', 'EmployerController@postJob');
 Route::get('/employer/notifications', 'EmployerController@notifications');
 Route::get('/employer/myPosts', 'EmployerController@myPosts');
 
+// Manage search results
+Route::get('/searchResult/{post}', 'EmployerController@searchResult');
+Route::post('/searchResults', 'PostController@searchResults');
+
+
 // Manage employer posts
 Route::post('/posts', 'PostController@store');
 
@@ -37,3 +42,4 @@ Route::get('/worker/profile', 'WorkerController@profile');
 Route::get('/worker/catalog', 'WorkerController@catalog');
 Route::get('/worker/requests', 'WorkerController@requests');
 Route::get('/worker/notification', 'WorkerController@notification');
+Route::get('/worker/searchResults', 'WorkerController@searchResults');

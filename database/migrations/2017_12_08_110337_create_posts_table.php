@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('bouloId');
             $table->string('userId');
             $table->string('toDo');
+            $table->string('jobLocation');
             $table->string('experience');
             $table->date('start');
             $table->date('end');

@@ -4,19 +4,22 @@
 @section('content')
 
     <link rel="stylesheet" type="text/css" href="/css/empPages.css">
-    <link rel="stylesheet" type="text/css" href="/css/empGenSearch.css">
+    
 
     
     <div class="pageContent">
         <div class="container">
             <div class="row">
                 
-                @include('layouts.sideNav')
 
                   <!-- dashboard -->
-                 <div class="col-md-9">
+                 <div class="col-md-10">
                  
-                    <h2>Employer notification goes here</h2>
+                    @foreach ($SearchR as $searchR)
+
+                        @include('posts.search')
+
+                    @endforeach
 
                  </div> <!-- closing of dashboard -->
 
