@@ -1,0 +1,112 @@
+/*Schema for smallboulo Done 31st October 2017 at 15:22*/
+
+/*
+*table users contains all information about users
+*resetToken: a token used for password reset
+*An employee can be turned into an employer and vice versa by switching userType
+*/
+CREATE TABLE IF NOT EXISTS `users`(
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `userType` enum('emp', 'work', 'both') COMMENT 'emp is an employer and work is a job seeker',
+  `password` varchar(255) NOT NULL COMMENT 'The user password',
+  `email` varchar(255) NOT NULL COMMENT 'The user email',
+  `firstName` varchar(255) NOT NULL COMMENT 'User\'s first name',
+  `lastName` varchar(255) NOT NULL COMMENT 'last name of user',
+  `profilePic` text COMMENT 'The user profile picture',
+  `created_at` TIMESTAMP NOT NULL COMMENT 'When the user has been created',
+  `updated_at` TIMESTAMP NOT NULL COMMENT 'The last time the user account was modified',
+  `country` varchar(255) NOT NULL COMMENT 'The country of the user',
+  `city` varchar(255) NOT NULL COMMENT 'City of the user',
+  `tel` int(15) NOT NULL COMMENT 'The user phone contact',
+  `gender` enum('m','f') NOT NULL COMMENT 'The gender of the user, m for male and f for female',
+  `birthday` date NOT NULL COMMENT 'The date of birth of the user',
+  `active` varchar(255) NOT NULL COMMENT 'The state of a user, active or inactive',
+  `resetToken` varchar(255) DEFAULT NULL,
+  `resetComplete` varchar(3) DEFAULT 'No',
+  `noOfJobs` int NOT NULL COMMENT 'number of jobs taken or advertised',
+  `recommendations` SMALLINT NOT NULL COMMENT 'Number of recommendations user has to his name',
+  `comment` TEXT NOT NULL COMMENT 'A comment for the users',
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `tel_UNIQUE` (`tel`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='User table for the entire system';
+
+
+/*
+*Holds special configurations for specific users of smallboulo
+*/
+CREATE TABLE IF NOT EXISTS `user_configs`(
+  `configId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `paidUser` enum('y','n') NOT NULL COMMENT 'A user who has paid for sms charges',
+  `smsConfig` enum('y','n') NOT NULL COMMENT 'y when user is subscribed to receive messages',
+  `workSuggest` enum('y','n') NOT NULL COMMENT 'User accepts to receive suggestions emailed to him',
+  `subscribed` enum('y','n') NOT NULL COMMENT 'user who has paid charges, if any for mail or sms notifications',
+  FOREIGN KEY(`userId`) references `users`(`userId`),
+  PRIMARY KEY (`configId`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT 'Contains all user configurations';
+
+/*
+*Holds a list of all skills a single user may have 
+*/
+CREATE TABLE IF NOT EXISTS `skills`(
+  `skillId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `skill` varchar(255) NOT NULL COMMENT 'The skill a worker has',
+  FOREIGN KEY(`userId`) references `users`(`userId`),
+  PRIMARY KEY(`skillId`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=39;
+
+/*
+*The workerEmployerDeals table holds transactions between employers and workers
+*For each transaction, two records are added, one for the worker and the other for the employer
+*/
+
+CREATE TABLE IF NOT EXISTS `worker_employer_deals`(
+  `dealId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'A unique id for transaction between an employer and a worker',
+  `userId` int(11) NOT NULL COMMENT 'A userId maybe the id of a worker or an employer',
+  `dealDate` TIMESTAMP NOT NULL,
+  FOREIGN KEY(`userId`) references `users`(`userId`),
+  PRIMARY KEY (`dealId`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT 'worker and user transaction record';
+
+
+/*
+*Contains a list and details of smallboulo jobs registered by employers
+*toDo: The job description provided by the employer, it's INDEXED for search efficiency
+*/
+CREATE TABLE IF NOT EXISTS `posts`(
+  `bouloId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'bouloId is the job id',
+  `userId` int(11) NOT NULL COMMENT 'The userId should be the id of an employer',
+  `userSkill` varchar(30) NOT NULL COMMENT 'The kind of skill required for the job',
+  `jobLocation` varchar(50) NOT NULL COMMENT 'This field holds the location of the job posted',
+  `toDo` TEXT NOT NULL COMMENT 'This is the job description from an employer',
+  `created_at` TIMESTAMP NOT NULL,
+  `updated_at` TIMESTAMP NOT NULL,
+  `experience` TINYINT NOT NULL DEFAULT 0 COMMENT 'The length of time the user has done the task, defaul 0 = no experience',
+  `start` datetime NOT NULL COMMENT 'When the work has to start',
+  `deadline` datetime NOT NULL COMMENT 'The last date to for the employer to receive request',
+  `noOFViews` int NOT NULL,
+  `jobState` enum('taken','available','deleted','suspended') NOT NULL DEFAULT 'available',
+  `priceRange` mediumint NOT NULL COMMENT 'The price range of a job',
+  `noOfWorkers` smallint NOT NULL DEFAULT 1 COMMENT 'Total number of workers needed for the smallboulo',
+  FOREIGN KEY(`userId`) references `users`(`userId`),
+  PRIMARY KEY (`bouloId`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT 'Contains list of jobs created by an enployer';
+
+
+
+/*
+*Since one job may require more than one skill, skillsForBoulo table is created to hold
+*all the extra skills required for a single job
+*/
+CREATE TABLE IF NOT EXISTS `skills_for_boulos`(
+  `skillId` int(11) NOT NULL AUTO_INCREMENT,
+  `bouloId` int(11) NOT NULL,
+  `otherSkills` varchar(255) NOT NULL,
+  FOREIGN KEY  (`bouloId`) references `posts`(`bouloId`),
+  PRIMARY KEY (`skillId`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT 'Contains all the skills a worker may have';
+
+
+
