@@ -85,3 +85,13 @@ a:hover {
     display: none;
 }
 
+
+@media(max-width:767px){
+    #position{
+        margin-top: 10%;
+        margin-bottom: 0%;
+    }
+    #bodyPosition{
+        margin-top: 0%;
+    }
+}
