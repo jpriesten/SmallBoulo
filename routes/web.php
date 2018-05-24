@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 // Manage user sign-up, log-in and log-out
-Route::get('/log_in', 'UserConfigController@log_in');
-Route::get('/sign_up', 'UserConfigController@sign_up');
+Route::get('/login', 'UserConfigController@log_in')->name('login');
+Route::get('/signup', 'UserConfigController@sign_up');
+Route::post('/signup', 'UserConfigController@storeSign_up');
+Route::get('/logout', 'UserConfigController@destroy');
 
 // Employer routes
 Route::get('/employer', 'EmployerController@index');

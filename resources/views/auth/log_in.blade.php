@@ -2,6 +2,7 @@
 
 @extends('layouts.master')
 
+@include('layouts.nav')
 
 @section('content')
 

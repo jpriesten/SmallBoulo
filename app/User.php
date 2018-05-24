@@ -14,8 +14,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $primaryKey = 'userId';
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstName', 'lastName', 'userType', 'email', 'password', 'country', 'city', 'tel', 'gender', 'birthday'
     ];
 
     /**
@@ -26,4 +29,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function publish(Post $post){
+
+        $this->posts()->save($post);
+        
+        // Post::create([
+
+    	// 	'userSkill' => request('userSkill'),
+        //     'jobLocation' => request('jobLocation'),
+		// 	'toDo' => request('toDo'),
+		// 	'deadline' => request('deadline'),
+		// 	'experience' => request('experience'),
+		// 	'start' => request('start'),
+		// 	'priceRange' => request('priceRange'),
+		// 	'noOfWorkers' => request('noOfWorkers'),
+		// 	'userId' => auth()->user()->userId
+
+    	// ]);
+    }
 }

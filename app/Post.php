@@ -15,7 +15,12 @@ class Post extends Model
 		'experience',
 		'start',
 		'priceRange',
-		'noOfWorkers'
+		'noOfWorkers',
+		'userId'
 
-    ];
+	];
+	
+	public function user(){
+		return $this->belongsTo(User::class);
+	}
 }

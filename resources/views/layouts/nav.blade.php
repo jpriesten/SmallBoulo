@@ -20,22 +20,32 @@
             <!-- Collect the nav links, forms, and other content for toggling ,go-to structure -->
             <div class="collaps navbar-collaps" id="position" >
                 <ul class="nav navbar-nav navbar-right">
+
+                    @if (Auth::check())
+                        <li>
+                            {{ Auth::user()->firstName }}
+                        </li>
+                        <li>
+                            <a href="/employer" id="employerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
+                        </li> 
+                        <li>
+                            <a href="/employer/profile" id="employerProfile">My Profile<span class="glyphicon glyphicon-user"></span></a>
+                        </li>
+                        <li>
+                            <a id="logoutBtn" href="/logout" class="empLogOut">Log Out<span class="glyphicon glyphicon-log-out"></span></a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="/employer" id="employerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
+                        </li> 
+                        <li>
+                            <a id="signupL" href="/signup">Sign Up<span class="glyphicon glyphicon-globe"></span></a>
+                        </li>
+                        <li>
+                            <a  id="loginL" href="/login">Log In<span class="glyphicon glyphicon-log-in"></span></a>
+                        </li>
+                    @endif
                     
-                    <!-- <li>
-                        <a id="signupL" href="/sign_up">Sign Up</a>
-                    </li>
-                    <li>
-                        <a  id="loginL" href="/log_in">Log In<span class="glyphicon glyphicon-log-in"></span></a>
-                    </li> -->
-                    <li>
-                        <a href="/employer" id="employerSearch">Search<span class="glyphicon glyphicon-search"></span></a>
-                    </li> 
-                    <li>
-                        <a href="/employer/profile" id="employerProfile">Post<span class="glyphicon glyphicon-user"></span></a>
-                    </li>
-                    <!-- <li>
-                        <a id="logoutBtn" href="/log_out" class="empLogOut">Log Out<span class="glyphicon glyphicon-log-out"></span></a>
-                    </li> -->
                 </ul>
             </div> <!-- .navbar-collapse -->   
         </div><!-- /.container -->

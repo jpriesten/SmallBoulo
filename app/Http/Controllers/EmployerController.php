@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\User;
 
 class EmployerController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['index', 'searchResult']);
+    }
     public function index(){
     	return view('posts.employer.index');
     }

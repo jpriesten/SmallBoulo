@@ -8,6 +8,7 @@ use App\Post;
 
 class PostController extends Controller
 {
+
     public function index(){
     	return view('posts.index');
     }
@@ -32,18 +33,24 @@ class PostController extends Controller
 
     	]);
 
-    	\App\Post::create([
+		auth()->user()->publish(new Post(request([
+			'userSkill', 'jobLocation', 'todo', 'deadline',
+			'experience', 'start', 'priceRange', 'noOfWorkers'
+			]))
+		);
+    	// \App\Post::create([
 
-    		'userSkill' => request('userSkill'),
-            'jobLocation' => request('jobLocation'),
-			'toDo' => request('toDo'),
-			'deadline' => request('deadline'),
-			'experience' => request('experience'),
-			'start' => request('start'),
-			'priceRange' => request('priceRange'),
-			'noOfWorkers' => request('noOfWorkers')
+    	// 	'userSkill' => request('userSkill'),
+        //     'jobLocation' => request('jobLocation'),
+		// 	'toDo' => request('toDo'),
+		// 	'deadline' => request('deadline'),
+		// 	'experience' => request('experience'),
+		// 	'start' => request('start'),
+		// 	'priceRange' => request('priceRange'),
+		// 	'noOfWorkers' => request('noOfWorkers'),
+		// 	'userId' => auth()->user()->userId
 
-    	]);
+    	// ]);
 
     	return redirect('/employer/myPosts');
 	}
